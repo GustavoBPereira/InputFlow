@@ -6,4 +6,13 @@ class FileManager:
         line = self.file.readline()
         if not line:
             return False
-        return line.strip().split(':>')
+        command_and_param = line.strip().split(':>')
+        return self.sanitize_command_and_param(*command_and_param)
+
+    def sanitize_command_and_param(self, command, param):
+        match command:
+            case 'click':
+                param = [int(cord) for cord in param.split(',')]
+            case 'wait':
+                param = int(param)
+        return command, param
