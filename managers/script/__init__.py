@@ -14,7 +14,8 @@ class ScriptManager:
         return getattr(self, self.command)
 
     def click(self):
-        pyautogui.click(x=self.param[0], y=self.param[1])
+        pyautogui.moveTo(x=self.param[0], y=self.param[1], duration=0.5)
+        pyautogui.click()
 
     def type(self):
         pyautogui.write(self.param)

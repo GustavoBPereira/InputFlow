@@ -1,48 +1,13 @@
-import tkinter as tk
-from tkinter import filedialog
+import os
 
-from utils import run_by_file_path
+from managers import FileManager
+from utils import run_by_file_path, display_cli_interface
 
-selected_script_path = ""
+close_app = False
 
+files = [file for file in FileManager.list_files(os.getcwd())]
+while not close_app:
+    display_cli_interface(files)
+    answer = input('>>>')
 
-def select_file():
-    global selected_script_path
-    selected_script_path = filedialog.askopenfilename()
-    update_run_button_state()
-    if selected_script_path:
-        file_button.config(text=selected_script_path)
-
-
-def run_program():
-    global selected_script_path
-    print("Executando o programa...")
-    window.iconify()
-    print("Caminho do arquivo selecionado:", selected_script_path)
-    run_by_file_path(selected_script_path)
-
-
-def update_run_button_state():
-    if selected_script_path:
-        run_button.config(state=tk.NORMAL)
-    else:
-        run_button.config(state=tk.DISABLED)
-
-
-window = tk.Tk()
-window.title("Input Flow")
-window.geometry("473x627")
-
-button_frame = tk.Frame(window)
-button_frame.pack(pady=10)
-
-file_button = tk.Button(button_frame, text="Selecionar...", command=select_file)
-file_button.pack(side=tk.LEFT, padx=5)
-
-run_button = tk.Button(button_frame, text="Executar", command=run_program, state=tk.DISABLED)
-run_button.pack(side=tk.LEFT, padx=5)
-
-text_area = tk.Text(window, height=10, width=50)
-text_area.pack(pady=10)
-
-window.mainloop()
+    run_by_file_path(files[int(answer) - 1])
