@@ -1,6 +1,7 @@
 import os
 
 from managers import FileManager, ScriptManager
+from managers.inspector import start_mouse_inspector
 
 
 def run_by_file_path(path):
@@ -10,6 +11,12 @@ def run_by_file_path(path):
         if not command_and_param:
             break
         ScriptManager(*command_and_param).execute()
+
+def run_mouse_inspector():
+    positions = start_mouse_inspector()
+    with open('../mouse_history.txt', 'w') as f:
+        for position in positions:
+            f.writelines(f'{position["x"]},{position["y"]}\n')
 
 
 def display_cli_interface(files):
@@ -26,4 +33,16 @@ def display_cli_interface(files):
     print("  Escolha o número entre colchetes do arquivo para executar \n")
 
     for i, file in enumerate(files):
-        print(f'[{i+1}] {file}')
+        print(f'[{i+1}] {file.name}')
+
+    print(
+        '\n'
+        '=========================================================\n'
+        '[0] Para iniciar a captura do mouse\n\n'
+        'Quando ativo, sempre que teclar "0" a posição atual do mouse\n'
+        'será registrada, para terminar, tecle "esc".\n'
+        '\n'
+        'Ao teclar "esc" será gerado um arquivo mouse_history.txt\n'
+        'com todas as cordenadas do mouse, quando teclou "0"\n'
+        '\n'
+    )
