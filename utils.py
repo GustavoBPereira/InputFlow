@@ -14,7 +14,7 @@ def run_by_file_path(path):
 
 def run_mouse_inspector():
     positions = start_mouse_inspector()
-    with open('../mouse_history.txt', 'w') as f:
+    with open('mouse_history.txt', 'w') as f:
         for position in positions:
             f.writelines(f'{position["x"]},{position["y"]}\n')
 
