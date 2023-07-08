@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 from managers import FileManager, ScriptManager
 from managers.inspector import start_mouse_inspector
@@ -16,7 +17,8 @@ def run_mouse_inspector():
     positions = start_mouse_inspector()
     with open('mouse_history.txt', 'w') as f:
         for position in positions:
-            f.writelines(f'{position["x"]},{position["y"]}\n')
+            now = datetime.now()
+            f.writelines(f'click:>{position["x"]},{position["y"]} {now.hour}:{now.minute}:{now.second}\n')
 
 
 def display_cli_interface(files):
