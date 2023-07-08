@@ -1,0 +1,2 @@
+class FileEnd(Exception):
+    pass

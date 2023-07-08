@@ -1,5 +1,7 @@
 :>InputFlow
+
 click:>960,540
 type:>hello world
 wait:>2
+
 press:>enter

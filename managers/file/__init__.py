@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from managers.file.exceptions import FileEnd
+
 
 class FileManager:
     def __init__(self, file_name):
@@ -8,10 +10,10 @@ class FileManager:
 
     def next_line(self):
         line = self.file.readline()
-        if line.strip() == ':>InputFlow':
-            line = self.file.readline()
-        if not line:
+        if line.strip() == ':>InputFlow' or line == '\n':
             return False
+        if not line:
+            raise FileEnd
         command_and_param = line.strip().split(':>')
         return self.sanitize_command_and_param(*command_and_param)
 

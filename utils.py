@@ -2,16 +2,20 @@ import os
 from datetime import datetime
 
 from managers import FileManager, ScriptManager
+from managers.file import FileEnd
 from managers.inspector import start_mouse_inspector
 
 
 def run_by_file_path(path):
     file_manager = FileManager(path)
     while True:
-        command_and_param = file_manager.next_line()
-        if not command_and_param:
+        try:
+            command_and_param = file_manager.next_line()
+            if command_and_param:
+                ScriptManager(*command_and_param).execute()
+        except FileEnd:
             break
-        ScriptManager(*command_and_param).execute()
+
 
 def run_mouse_inspector():
     positions = start_mouse_inspector()
@@ -35,7 +39,7 @@ def display_cli_interface(files):
     print("  Escolha o número entre colchetes do arquivo para executar \n")
 
     for i, file in enumerate(files):
-        print(f'[{i+1}] {file.name}')
+        print(f'[{i + 1}] {file.name}')
 
     print(
         '\n'
