@@ -1,7 +1,7 @@
 :>InputFlow
 
-click:>960,540
-type:>hello world
-wait:>2
+click:>960,540 # this is an comment example
+type:>hello world #sharp with left space is considereded a comment
+wait:>2 # comments can't be in blank lines, be careful
 
 press:>enter

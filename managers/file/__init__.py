@@ -14,7 +14,8 @@ class FileManager:
             return False
         if not line:
             raise FileEnd
-        command_and_param = line.strip().split(':>')
+        line_without_comment = line.strip().split(' #')[0]
+        command_and_param = line_without_comment.split(':>')
         return self.sanitize_command_and_param(*command_and_param)
 
     def sanitize_command_and_param(self, command, param):
