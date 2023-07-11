@@ -21,7 +21,7 @@ jobs:
         if: ${{ matrix.config.os == 'ubuntu-22.04'}}
         run: |
           sudo apt-get update
-          sudo apt install python3-tk python3-dev python3-setuptools tcl
+          sudo apt install python3-dev python3-setuptools tcl
 
       - name: Checkout code
         uses: actions/checkout@v3
@@ -38,7 +38,7 @@ jobs:
           pip install pyinstaller
 
       - name: Build with pyinstaller for ${{ matrix.config.os }}
-        run: pyinstaller main.py --onefile --noconsole
+        run: pyinstaller main.py --onefile --console
 
       - name: Rename builded app
         run: mv ./dist ./dist-${{ matrix.config.os }}

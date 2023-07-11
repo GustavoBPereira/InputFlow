@@ -1,2 +1,2 @@
-PyAutoGUI==0.9.54
-tk
+PyAutoGUI==0.9
+keyboard==0.13
