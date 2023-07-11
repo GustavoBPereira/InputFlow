@@ -14,10 +14,9 @@ jobs:
       matrix:
         config:
           - os: ubuntu-22.04
-          - os: macos-latest
           - os: windows-2019
     steps:
-      - name: Install tk on ubuntu
+      - name: Install python libs on ubuntu
         if: ${{ matrix.config.os == 'ubuntu-22.04'}}
         run: |
           sudo apt-get update
@@ -35,7 +34,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pyobjc
           pip install pyinstaller
 
       - name: Build with pyinstaller for ${{ matrix.config.os }}
@@ -66,9 +64,6 @@ jobs:
       - name: Zip file ubuntu
         run: zip -r inputflow_ubuntu.zip dist-ubuntu-*
 
-      - name: Zip file macos
-        run: zip -r inputflow_macos.zip dist-macos-*
-
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
@@ -81,4 +76,3 @@ jobs:
           files: |
             inputflow_windows.zip
             inputflow_ubuntu.zip
-            inputflow_macos.zip
