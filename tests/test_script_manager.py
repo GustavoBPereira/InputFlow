@@ -5,11 +5,13 @@ from managers.script import ScriptManager
 
 class TestScriptManager(TestCase):
 
+    @patch('pyautogui.moveTo')
     @patch('pyautogui.click')
-    def test_execute_click_method(self, mock):
+    def test_execute_click_method(self, mock_click, mock_moveto):
         script_manager = ScriptManager('click', [960, 540])
         script_manager.execute()
-        mock.assert_called_once()
+        mock_click.assert_called_once()
+        mock_moveto.assert_called_once()
 
     @patch('pyautogui.write')
     def test_execute_type_method(self, mock):
