@@ -12,6 +12,8 @@ def run_by_file_path(path):
         try:
             command_and_param = file_manager.next_line()
             if command_and_param:
+                print(f'{command_and_param[0]} : ', end='')
+                print(command_and_param[1], sep=',')
                 ScriptManager(*command_and_param).execute()
         except FileEnd:
             break
