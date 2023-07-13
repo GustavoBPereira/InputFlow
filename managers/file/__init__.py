@@ -10,12 +10,12 @@ class FileManager:
 
     def next_line(self):
         line = self.file.readline()
-        if line.strip() == ':>InputFlow' or line == '\n':
+        if line.strip() == 'InputFlow' or line == '\n':
             return False
         if not line:
             raise FileEnd
         line_without_comment = line.strip().split(' #')[0]
-        command_and_param = line_without_comment.split(':>')
+        command_and_param = line_without_comment.split(' >>> ')
         return self.sanitize_command_and_param(*command_and_param)
 
     def sanitize_command_and_param(self, command, param):
@@ -38,4 +38,4 @@ class FileManager:
     @classmethod
     def is_valid_file(cls, file):
         with open(file) as f:
-            return f.readline().strip() == ':>InputFlow'
+            return f.readline().strip() == 'InputFlow'

@@ -13,4 +13,5 @@ while not close_app:
     if answer == 0:
         run_mouse_inspector()
     else:
-        run_by_file_path(files[answer - 1])
+        for c in range(0, int(input('Quantas vezes quer executar?'))):
+            run_by_file_path(files[answer - 1])
