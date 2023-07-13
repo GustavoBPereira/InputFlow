@@ -16,5 +16,8 @@ class TestFileManager(TestCase):
         self.assertEqual(file_manager.next_line(), ('wait', 2))
         self.assertEqual(file_manager.next_line(), False)
         self.assertEqual(file_manager.next_line(), ('press', 'enter'))
+        self.assertEqual(file_manager.next_line(), False)
+        self.assertEqual(file_manager.next_line(), ('scroll', -10))
+        self.assertEqual(file_manager.next_line(), ('scroll', 10))
         with pytest.raises(FileEnd):
             file_manager.next_line()

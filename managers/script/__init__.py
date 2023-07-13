@@ -25,3 +25,6 @@ class ScriptManager:
 
     def press(self):
         pyautogui.press(self.param)
+
+    def scroll(self):
+        pyautogui.scroll(self.param)

@@ -5,3 +5,6 @@ type >>> hello world #sharp with left space is considereded a comment
 wait >>> 2 # comments can't be in blank lines, be careful
 
 press >>> enter
+
+scroll >>> -10
+scroll >>> 10

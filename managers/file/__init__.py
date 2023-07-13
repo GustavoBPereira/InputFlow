@@ -24,6 +24,8 @@ class FileManager:
                 param = [int(cord) for cord in param.split(',')]
             case 'wait':
                 param = int(param)
+            case 'scroll':
+                param = int(param)
         return command, param
 
     @classmethod
