@@ -23,8 +23,7 @@ def run_mouse_inspector():
     positions = start_mouse_inspector()
     with open('mouse_history.txt', 'w') as f:
         for position in positions:
-            now = datetime.now()
-            f.writelines(f'click:>{position["x"]},{position["y"]} {now.hour}:{now.minute}:{now.second}\n')
+            f.writelines(f'click >>> {position["x"]},{position["y"]}\n')
 
 
 def display_cli_interface(files):
