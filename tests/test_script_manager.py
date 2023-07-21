@@ -20,6 +20,18 @@ class TestScriptManager(TestCase):
         mock_click.assert_called_once()
         mock_moveto.assert_called_once()
 
+        self.assertEqual(mock_click.call_args.kwargs['button'], 'primary')
+
+    @patch('pyautogui.moveTo')
+    @patch('pyautogui.click')
+    def test_execute_right_click_method(self, mock_click, mock_moveto):
+        script_manager = ScriptManager('right_click', [321, 423])
+        script_manager.execute()
+        mock_click.assert_called_once()
+        mock_moveto.assert_called_once()
+
+        self.assertEqual(mock_click.call_args.kwargs['button'], 'right')
+
     @patch('pyautogui.write')
     def test_execute_type_method(self, mock):
         script_manager = ScriptManager('type', 'hello world')

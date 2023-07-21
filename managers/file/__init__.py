@@ -20,7 +20,7 @@ class FileManager:
 
     def sanitize_command_and_param(self, command, param):
         match command:
-            case 'click' | 'move':
+            case 'click' | 'move' | 'right_click':
                 param = [int(cord) for cord in param.split(',')]
             case 'wait':
                 param = int(param)

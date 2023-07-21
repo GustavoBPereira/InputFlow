@@ -21,5 +21,7 @@ class TestFileManager(TestCase):
         self.assertEqual(file_manager.next_line(), ('scroll', 10))
         self.assertEqual(file_manager.next_line(), False)
         self.assertEqual(file_manager.next_line(), ('move', [530, 233]))
+        self.assertEqual(file_manager.next_line(), False)
+        self.assertEqual(file_manager.next_line(), ('right_click', [321, 423]))
         with pytest.raises(FileEnd):
             file_manager.next_line()

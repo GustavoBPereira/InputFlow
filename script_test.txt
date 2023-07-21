@@ -10,3 +10,5 @@ scroll >>> -10
 scroll >>> 10
 
 move >>> 530,233
+
+right_click >>> 321,423

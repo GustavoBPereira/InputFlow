@@ -16,9 +16,12 @@ class ScriptManager:
     def move(self):
         pyautogui.moveTo(x=self.param[0], y=self.param[1], duration=0.5)
 
-    def click(self):
+    def click(self, button='primary'):
         self.move()
-        pyautogui.click()
+        pyautogui.click(button=button)
+
+    def right_click(self):
+        self.click(button='right')
 
     def type(self):
         pyautogui.write(self.param)
