@@ -38,6 +38,11 @@ jobs:
       - name: Rename builded app
         run: mv ./dist ./dist-${{ matrix.config.os }}
 
+      - name: Add example file in distribution folder
+        run: |
+          cp script_test.txt ./dist-${{ matrix.config.os }}
+          mv ./dist-${{ matrix.config.os }}/script_test.txt ./dist-${{ matrix.config.os }}/example.txt 
+
       - name: Upload result job ${{ matrix.config.os }}
         uses: actions/upload-artifact@v3
         with:
