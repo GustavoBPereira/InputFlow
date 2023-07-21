@@ -13,8 +13,11 @@ class ScriptManager:
     def correct_method(self):
         return getattr(self, self.command)
 
-    def click(self):
+    def move(self):
         pyautogui.moveTo(x=self.param[0], y=self.param[1], duration=0.5)
+
+    def click(self):
+        self.move()
         pyautogui.click()
 
     def type(self):

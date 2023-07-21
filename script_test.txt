@@ -8,3 +8,5 @@ press >>> enter
 
 scroll >>> -10
 scroll >>> 10
+
+move >>> 530,233
